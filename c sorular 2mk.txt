@@ -1,0 +1,225 @@
+Soru1) Şifreli Kapı
+Hikâye:
+Genç bir hacker, kilitli bir kapıyı açmak için doğru şifreyi çözmek zorunda. Kapının üzerindeki yazı
+şöyle:
+“Girilen sayının rakamları toplamı 15 olursa kapı açılır.”
+Görev:
+Kullanıcıdan bir sayı alın. Eğer rakamları toplamı 15 ise “Kapı açıldı!” yazdırın, değilse “Yanlış şifre!”
+deyin.
+Yöntem:
+• int rakamToplami(int sayi) fonksiyonu yazılmalı.
+Kodu:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int rakamToplami(int sayi) {
+    int toplam = 0;
+    while (sayi > 0) {
+        toplam += sayi % 10;
+        sayi /= 10;
+    }
+
+    return toplam;
+}
+
+int main() {
+    int sayi;
+
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+
+    if (rakamToplami(sayi) == 15) {
+        printf("Kapi acildi aferin bro\n");
+    } else {
+        printf("Yanlis sifre beceriksiz aptal\n");
+    }
+
+    return 0;
+}
+
+
+
+
+Soru2) Palindrom Kontrolü Soru: Kullanıcıdan bir kelime alın. Bu kelimenin tersten okunuşu da aynıysa "Palindromdur" yazdırın. Beklenen Çıktı Örneği: Bir kelime giriniz: kayak Palindromdur. 
+Yöntem: • int palindromMu(char kelime[]) fonksiyonu kelimenin palindrom olup olmadığını kontrol eder.
+Kodu:
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+
+int palindromMu(char kelime[]) {
+    int uzunluk = strlen(kelime);
+    int i = 0, j = uzunluk - 1;
+    while (i < j) {
+        if (kelime[i] != kelime[j])
+            return 0; // Palindrom değil
+        i++;
+        j--;
+    }
+    return 1; // Palindromdur
+}
+int main() {
+    char kelime[100];
+
+    printf("Bir kelime giriniz: ");
+    scanf("%s", kelime);
+
+    if (palindromMu(kelime))
+        printf("Palindromdur.\n");
+    else
+        printf("Palindrom degildir.\n");
+
+    return 0;
+}
+
+
+
+Soru3)Sayının Basamaklarını Ters Çevirme
+Soru: Kullanıcıdan bir sayı alın. Bu sayının basamaklarını ters çevirerek ekrana yazdırın.
+Beklenen Çıktı Örneği:
+Bir sayı giriniz: 12345
+Ters: 54321
+Yöntem:
+• int tersCevir(int sayi) fonksiyonu sayının tersini hesaplar ve döndürür
+Kodu:
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int tersCevir(int sayi) {
+    int ters = 0;
+    while (sayi != 0) {
+        ters = ters * 10 + (sayi % 10);
+        sayi /= 10;
+    }
+    return ters;
+}
+int main() {
+    int sayi;
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+    int sonuc = tersCevir(sayi);
+    printf("Ters: %d\n", sonuc);
+    return 0;
+}
+
+
+Soru4)  En Büyük ve En Küçük Sayıyı Bulma
+Açıklama: Kullanıcıdan 10 sayı alın. En büyük ve en küçük sayıyı bulun.
+Beklenen Çıktı Örneği:
+Kodu:
+
+#include <stdio.h>
+
+int main() {
+    int sayi, enKucuk, enBuyuk;
+
+    printf("10 sayi giriniz: ");
+    scanf("%d", &sayi);
+    enKucuk = sayi;
+    enBuyuk = sayi;
+
+
+    for (int i = 1; i < 10; i++) {
+        scanf("%d", &sayi);
+
+        if (sayi < enKucuk)
+            enKucuk = sayi;
+
+        if (sayi > enBuyuk)
+            enBuyuk = sayi;
+    }
+
+    printf("En kucuk: %d  En buyuk: %d\n", enKucuk, enBuyuk);
+
+    return 0;
+}
+
+
+soru5)Faktöriyel Hesaplama
+Açıklama: Kullanıcıdan bir sayı alın. Bu sayının faktöriyelini hesaplayın.
+Beklenen Çıktı Örneği:
+Bir sayı giriniz: 5
+5! = 120
+Yöntem:
+• int faktoriyel(int n) fonksiyonu döngü kullanarak faktöriyel hesaplar.
+kodu:
+
+
+#include <stdio.h>
+
+int faktoriyel(int n) {
+    int sonuc = 1;
+
+    for (int i = 1; i <= n; i++) {
+        sonuc *= i;
+    }
+
+    return sonuc;
+}
+
+int main() {
+    int sayi;
+
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+
+    int f = faktoriyel(sayi);
+
+    printf("%d! = %d\n", sayi, f);
+
+    return 0;
+}
+
+
+soru6)Harf Sayacı
+Açıklama: Kullanıcıdan bir cümle alın. Sonra Cümlenin içinde sayısını bulmak istediğiniz harfi alın. Bu
+harfin verilen cümle içinde kaç defa geçtiğini saydırın. Sonuç ekranında “Tespit edilen “.....” harfi
+sayısı:” cümlesinde ..... ile ifade edilen boşluğa aranılan harfi yazdırın.
+Beklenen Çıktı Örneği:
+Bir cümle giriniz: Merhaba Dünya 2025
+Aranan harf: a
+Tespit edilen “a” harfi sayısı : 3
+Yöntem:
+• void karakterSay(char str[] , char aranan_harf) fonksiyonu for döngüsüyle karakterleri kontrol
+eder.
+
+kodu: 
+
+#include <stdio.h>
+#include <string.h>
+
+// Belirli bir harfin cümlede kaç kez geçtiğini sayan fonksiyon
+void karakterSay(char str[], char aranan_harf) {
+    int sayac = 0;
+
+    for (int i = 0; i < strlen(str); i++) {
+        if (str[i] == aranan_harf) {
+            sayac++;
+        }
+    }
+
+    printf("Tespit edilen \"%c\" harfi sayisi : %d\n", aranan_harf, sayac);
+}
+
+int main() {
+    char cumle[200];
+    char harf;
+
+    printf("Bir cumle giriniz: ");
+    fgets(cumle, sizeof(cumle), stdin);
+
+    // fgets ile girilen satırın sonundaki '\n' karakterini kaldırıyoruz
+    cumle[strcspn(cumle, "\n")] = '\0';
+
+    printf("Aranan harf: ");
+    scanf("%c", &harf);
+
+    karakterSay(cumle, harf);
+
+    return 0;
+}
+

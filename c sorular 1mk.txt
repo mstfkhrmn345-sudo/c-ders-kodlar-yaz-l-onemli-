@@ -1,0 +1,111 @@
+1.Soru) Kullanıcıdan iki tamsayı alan ve bu sayıların toplamını hesaplayarak ekrana yazdıran bir fonksiyon
+yazınız. main fonksiyonu içinde kullanıcıdan sayıları alıp, toplama fonksiyonunu çağırınız.
+Beklenen Çıktı Örneği:
+Birinci sayıyı giriniz: 5
+İkinci sayıyı giriniz: 7
+Toplam: 12
+yöntem:
+Fonksiyon int topla(int a, int b) şeklinde tanımlancak.
+
+Kodu: 
+#include <stdio.h>
+#include <stdlib.h>
+
+int topla(int a, int b) {
+    return a + b;
+}
+
+int main() {
+    int sayi1, sayi2;
+    printf("Birinci sayiyi giriniz: ");
+    scanf("%d", &sayi1);
+    printf("İkinci sayiyi giriniz: ");
+    scanf("%d", &sayi2);
+    int sonuc = topla(sayi1, sayi2);
+    printf("Toplam: %d\n", sonuc);
+    return 0;
+}
+
+
+
+
+
+Soru2) Kullanıcıdan 3 adet ondalıklı sayı (float) alarak bu sayıların ortalamasını hesaplayan bir fonksiyon
+yazınız. Fonksiyon, ortalamayı döndürmeli ve main fonksiyonunda bu değer ekrana yazdırılmalıdır.
+Beklenen Çıktı Örneği:
+3 adet sayı giriniz: 10.5 7.2 8.3
+Ortalama: 8.67
+Yöntem:
+Fonksiyon float_ortalama(float a, float b, float c) şeklinde tanımlanacak. %.2f formatı ile ekrana
+yazdırılacak.
+Kodu: 
+#include <stdio.h>
+#include <stdlib.h>
+
+float float_ortalama(float a, float b, float c) {
+    return (a + b + c) / 3.0f;
+}
+
+#include <stdio.h>
+#include <stdlib.h>
+
+float float_ortalama(float a, float b, float c) {
+    return (a + b + c) / 3.0f;
+}
+
+int main() {
+    float s1, s2, s3;
+    printf("1.sayiyi giriniz: ");
+    scanf("%f",&s1);
+    printf("2.sayiyi giriniz: ");
+    scanf("%f",&s2);
+    printf("3.sayiyi giriniz: ");
+    scanf("%f",&s3);
+    float ort = float_ortalama(s1, s2, s3);
+    printf("Ortalama: %.2f\n", ort);
+    return 0;
+}
+
+
+
+
+Soru3) Kullanıcıdan bir pozitif tamsayı alınız. Bu sayıdan küçük tüm asal sayıları bulan bir fonksiyon yazınız.
+Fonksiyon, asal sayıları ekrana yazdırmalıdır.
+Beklenen Çıktı Örneği:
+Bir sayı giriniz: 20
+Asal sayılar: 2 3 5 7 11 13 17 19
+Yöntem:
+- int asalMi(int n) fonksiyonu bir sayının asal olup olmadığı kontrol edilecek.
+- void asalListele(int sinir) fonksiyonu 2'den başlayarak sinir'a kadar olan asal sayıları yazdıracak.
+Kodu:
+#include <stdio.h>
+#include <stdlib.h>
+
+int asalMi(int n) {
+    if (n < 2)
+        return 0;
+    for (int i = 2; i * i <= n; i++) {
+        if (n % i == 0)
+            return 0;
+    }
+    return 1;
+}
+
+void asalListele(int sinir) {
+    printf("Asal sayilar: ");
+    for (int i = 2; i < sinir; i++) {
+        if (asalMi(i)) {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+}
+
+int main() {
+    int sayi;
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+    asalListele(sayi);
+    return 0;
+}
+

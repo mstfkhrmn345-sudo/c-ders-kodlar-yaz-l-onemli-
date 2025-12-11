@@ -1,0 +1,512 @@
+
+SORU 1
+
+
+Soru:
+Kullanıcıdan iki tamsayı alan ve bu sayıların toplamını hesaplayarak ekrana yazdıran bir fonksiyon
+yazınız. main fonksiyonu içinde kullanıcıdan sayıları alıp, toplama fonksiyonunu çağırınız.
+Beklenen Çıktı Örneği:
+Birinci sayıyı giriniz: 5
+İkinci sayıyı giriniz: 7
+Toplam: 12
+yöntem:
+Fonksiyon int topla(int a, int b) şeklinde tanımlancak.
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+
+int toplama(int s1, int s2)
+{
+    return s1 + s2;
+}
+
+int main() {
+    int sayi1, sayi2, toplam;
+
+    printf("Birinci sayiyi giriniz: ");
+    scanf("%d", &sayi1);
+
+    printf("ikinci sayiyi giriniz: ");
+    scanf("%d", &sayi2);
+
+    toplam = toplama(sayi1, sayi2);
+
+    printf("Toplam: %d\n", toplam);
+
+    return 0;
+}
+
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+
+
+
+
+soru 2
+
+Soru:
+Kullanıcıdan 3 adet ondalıklı sayı (float) alarak bu sayıların ortalamasını hesaplayan bir fonksiyon
+yazınız. Fonksiyon, ortalamayı döndürmeli ve main fonksiyonunda bu değer ekrana yazdırılmalıdır.
+Beklenen Çıktı Örneği:
+3 adet sayı giriniz: 10.5 7.2 8.3
+Ortalama: 8.67
+Yöntem:
+Fonksiyon float_ortalama(float a, float b, float c) şeklinde tanımlanacak. %.2f formatı ile ekrana
+yazdırılacak.
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+float float_ortalama(float s1, float s2, float s3) {
+    return (s1 + s2 + s3) / 3.0;
+}
+
+int main() {
+    float s1, s2, s3, ort;
+
+    printf("Birinci sayiyi giriniz: ");
+    scanf("%f", &s1);
+
+    printf("İkinci sayiyi giriniz: ");
+    scanf("%f", &s2);
+
+    printf("ucuncu sayiyi giriniz: ");
+    scanf("%f", &s3);
+
+    ort = float_ortalama(s1, s2, s3);
+
+    printf("Ortalama: %.2f\n", ort);
+
+    return 0;
+}
+
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+
+
+
+soru 3
+
+
+
+Soru:
+Kullanıcıdan bir pozitif tamsayı alınız. Bu sayıdan küçük tüm asal sayıları bulan bir fonksiyon yazınız.
+Fonksiyon, asal sayıları ekrana yazdırmalıdır.
+Beklenen Çıktı Örneği:
+Bir sayı giriniz: 20
+Asal sayılar: 2 3 5 7 11 13 17 19
+Yöntem:
+- int asalMi(int n) fonksiyonu bir sayının asal olup olmadığı kontrol edilecek.
+- void asalListele(int sinir) fonksiyonu 2'den başlayarak sinir'a kadar olan asal sayıları yazdıracak.
+
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int asalMi(int n)
+{
+    if (n < 2)
+     return 0;
+
+    for (int i = 2; i * i <= n; i++)
+    {
+        if (n % i == 0)
+            return 0;
+    }
+    return 1;
+}
+
+void asalListele(int sinir)
+{
+    printf("Asal sayilar: ");
+    for (int i = 2; i < sinir; i++)
+    {
+        if (asalMi(i))
+        {
+            printf("%d ", i);
+        }
+    }
+    printf("\n");
+}
+
+int main()
+ {
+    int sayi;
+
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+
+    asalListele(sayi);
+
+    return 0;
+}
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+
+
+
+1. Şifreli Kapı
+
+Soru:
+Kullanıcıdan bir pozitif tamsayı alınız. Bu sayıdan küçük tüm asal sayıları bulan bir fonksiyon yazınız.
+Fonksiyon, asal sayıları ekrana yazdırmalıdır.
+Beklenen Çıktı Örneği:
+Bir sayı giriniz: 20
+Asal sayılar: 2 3 5 7 11 13 17 19
+Yöntem:
+- int asalMi(int n) fonksiyonu bir sayının asal olup olmadığı kontrol edilecek.
+- void asalListele(int sinir) fonksiyonu 2'den başlayarak sinir'a kadar olan asal sayıları yazdıracak.
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int rakamToplami(int sayi)
+{
+    int toplam = 0;
+
+
+    while (sayi > 0)
+    {
+        toplam += sayi % 10;
+        sayi /= 10;
+    }
+
+    return toplam;
+}
+
+int main()
+{
+    int sayi;
+
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+
+    if (rakamToplami(sayi) == 15)
+    {
+        printf("Kapi acildi\n");
+    }
+
+    else
+
+    {
+        printf("Yanlis sifre\n");
+    }
+
+    return 0;
+}
+
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+
+
+
+2. Palindrom Kontrolü
+Soru: Kullanıcıdan bir kelime alın. Bu kelimenin tersten okunuşu da aynıysa "Palindromdur" yazdırın.
+Beklenen Çıktı Örneği:
+Bir kelime giriniz: kayak
+Palindromdur.
+Yöntem:
+• int palindromMu(char kelime[]) fonksiyonu kelimenin palindrom olup olmadığını kontrol eder.
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+int palindromMu(char kelime[])
+{
+    int uzunluk = strlen(kelime);
+    int i = 0;
+    int j = uzunluk - 1;
+
+
+    while (i < j)
+    {
+        if (kelime[i] != kelime[j])
+        {
+
+            return 0;
+        }
+        i++;
+        j--;
+    }
+
+    return 1;
+}
+
+int main() {
+    char kelime[100];
+
+    printf("Bir kelime giriniz: ");
+    scanf("%s", kelime);
+
+
+    if (palindromMu(kelime))
+        printf("Palindromdur.\n");
+    else
+        printf("Palindrom degildir.\n");
+
+    return 0;
+}
+
+
+
+
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+3. Sayının Basamaklarını Ters Çevirme
+Soru: Kullanıcıdan bir sayı alın. Bu sayının basamaklarını ters çevirerek ekrana yazdırın.
+Beklenen Çıktı Örneği:
+Bir sayı giriniz: 12345
+Ters: 54321
+Yöntem:
+• int tersCevir(int sayi) fonksiyonu sayının tersini hesaplar ve döndürür.
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int tersCevir(int sayi)
+{
+    int ters = 0;
+
+    while (sayi > 0)
+    {
+        int basamak = sayi % 10;
+        ters = ters * 10 + basamak;
+        sayi /= 10;
+    }
+
+    return ters;
+}
+
+int main()
+{
+    int sayi;
+
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+
+    printf("Girilen sayinin tersi: %d\n", tersCevir(sayi));
+
+    return 0;
+}
+
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+
+4. En Büyük ve En Küçük Sayıyı Bulma
+Açıklama: Kullanıcıdan 10 sayı alın. En büyük ve en küçük sayıyı bulun.
+Beklenen Çıktı Örneği:
+Sayıları giriniz: 12 45 3 67 23 89 1 34 56 78
+En küçük: 1 En büyük: 89
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int main()
+{
+    int sayi;
+    int enKucuk, enBuyuk;
+
+    printf("10 adet sayi giriniz:\n");
+
+    for (int i = 1; i <= 10; i++)
+    {
+        printf("%d. sayiyi giriniz: ", i);
+        scanf("%d", &sayi);
+
+        if (i == 1)
+        {
+            enKucuk = sayi;
+            enBuyuk = sayi;
+        }
+        else
+        {
+            if (sayi < enKucuk)
+                enKucuk = sayi;
+            if (sayi > enBuyuk)
+                enBuyuk = sayi;
+        }
+    }
+
+    printf("En kucuk: %d  En buyuk: %d\n", enKucuk, enBuyuk);
+
+    return 0;
+}
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+5. Faktöriyel Hesaplama
+Açıklama: Kullanıcıdan bir sayı alın. Bu sayının faktöriyelini hesaplayın.
+Beklenen Çıktı Örneği:
+Bir sayı giriniz: 5
+5! = 120
+Yöntem:
+• int faktoriyel(int n) fonksiyonu döngü kullanarak faktöriyel hesaplar
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+
+int faktoriyel(int n)
+{
+    int sonuc = 1;
+
+    for (int i = 1; i <= n; i++)
+    {
+        sonuc *= i;
+    }
+
+    return sonuc;
+}
+
+int main()
+{
+    int sayi;
+
+    printf("Bir sayi giriniz: ");
+    scanf("%d", &sayi);
+
+    if (sayi < 0)
+    {
+        printf("Negatif sayilarin faktöriyeli hesaplanamaz.\n");
+    }
+     else
+    {
+        printf("%d! = %d\n", sayi, faktoriyel(sayi));
+    }
+
+    return 0;
+}
+
+
+//************************************************************************************************************************************************************//
+
+
+
+6. Harf Sayacı
+Açıklama: Kullanıcıdan bir cümle alın. Sonra Cümlenin içinde sayısını bulmak istediğiniz harfi alın. Bu
+harfin verilen cümle içinde kaç defa geçtiğini saydırın. Sonuç ekranında “Tespit edilen “.....” harfi
+sayısı:” cümlesinde ..... ile ifade edilen boşluğa aranılan harfi yazdırın.
+Beklenen Çıktı Örneği:
+Bir cümle giriniz: Merhaba Dünya 2025
+Aranan harf: a
+Tespit edilen “a” harfi sayısı : 3
+Yöntem:
+• void karakterSay(char str[] , char aranan_harf) fonksiyonu for döngüsüyle karakterleri kontrol
+eder.
+
+
+
+
+
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void karakterSay(char str[], char aranan_harf)
+{
+    int sayac = 0;
+    int uzunluk = strlen(str);
+
+    for (int i = 0; i < uzunluk; i++)
+    {
+        if (str[i] == aranan_harf)
+        {
+            sayac++;
+        }
+    }
+
+    printf("Tespit edilen %c harfi sayisi : %d\n", aranan_harf, sayac);
+}
+
+int main()
+{
+    char cumle[200];
+    char harf;
+
+    printf("Bir cumle giriniz: ");
+    fgets(cumle, sizeof(cumle), stdin);
+
+    cumle[strcspn(cumle, "\n")] = 0;
+
+    printf("Aranan harf: ");
+    scanf("%c", &harf);
+
+    karakterSay(cumle, harf);
+
+    return 0;
+}
+
+
+
+
+
+
+//************************************************************************************************************************************************************//
+
+
+
+
+
+
+
